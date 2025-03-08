@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet, SafeAreaView, StatusBar, Platform } from 'react-native';
+import Feather from '@expo/vector-icons/Feather';
 
 import Header from '../../components/Header';
 import MemoListItem from '../../components/MemoListItem';
@@ -37,7 +38,9 @@ const List = () => {
           ))}
         </ScrollView>
         {/* 追加ボタン */}
-        <CircleButton>＋</CircleButton>
+        <CircleButton>
+          <Feather name="plus" size={40} />
+        </CircleButton>
       </SafeAreaView>
     </View>
   );

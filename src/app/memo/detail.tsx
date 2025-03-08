@@ -1,4 +1,5 @@
 import { View, Text, StatusBar, SafeAreaView, StyleSheet, ScrollView } from "react-native";
+import { Feather } from "@expo/vector-icons";
 
 import Header from "../../components/Header";
 import MemoListItem from "../../components/MemoListItem";
@@ -29,7 +30,9 @@ const Detail = (): JSX.Element => {
                         </ScrollView>
                     </View>
                 ))}
-                <CircleButton style={{ top: 110, bottom:"auto" }}>＋</CircleButton>
+                <CircleButton style={{ top: 110, bottom:"auto" }}>
+                    <Feather name="check" size={40} />
+                </CircleButton>
             </SafeAreaView>
         </View>
     );
