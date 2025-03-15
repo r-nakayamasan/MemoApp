@@ -23,7 +23,7 @@ const Detail = (): JSX.Element => {
                 {/* メモリスト */}
                 {/* 将来的にはデティール用のコンポーネントを作成する */}
                 {memos.map(memo => (
-                    <View key={memo.id}>
+                    <View key={memo.id} style={{ flex: 1 }}>
                         <MemoListItem {...memo} />
                         <ScrollView style={styles.memoBpdy}>
                             <Text style={styles.memoBodyText}>{memo.body}</Text>

@@ -9,13 +9,8 @@ import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/icon";
 
 
-const Edit = (): JSX.Element => {
-    const memos = [
-        { id: 1, title: '買い物リスト', date: '2020年12月24日 10:00', body: '今日は買い物に行くときに忘れないようにしたいことをメモしておきます。まず、スーパーでは牛乳と卵を必ず買うこと。また、今晩の夕食用に新鮮な野菜（特にトマトとほうれん草）を選んで購入する。お米が残り少なくなっていたので5キロの袋を一つ追加しておく。日用品ではティッシュペーパーと洗剤がそろそろ切れそうだったので、セール品を狙って買い置きをしておきたい。ついでにドラッグストアで歯磨き粉とシャンプーの予備も購入する。最近忙しくて疲れ気味だから、自分用のちょっとしたお菓子やコーヒーなど、息抜きになるものを一つ買っても良いかも。エコバッグを持参するのを絶対に忘れないように注意し、ポイントカードも念のため財布に入れておく。帰り道で銀行に立ち寄って、来週必要になるお金を下ろしておくのも忘れない。これだけ準備すれば安心して買い物ができそうだ。' },
-    ];
-
-    // メモの内容を状態として管理
-    const [bodyText, setBodyText] = React.useState(memos[0].body);
+const NewCreate = (): JSX.Element => {
+    const [bodyText, setBodyText] = React.useState("");
 
     return (
         // KeyboardAvoidingViewでキーボードによる入力時のレイアウト変更を行う
@@ -72,4 +67,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Edit;
+export default NewCreate;
