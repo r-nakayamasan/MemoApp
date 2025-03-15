@@ -1,10 +1,17 @@
 import { View, Text, StatusBar, SafeAreaView, StyleSheet, ScrollView } from "react-native";
+import { router } from "expo-router";
 
 import Header from "../../components/Header";
 import MemoListItem from "../../components/MemoListItem";
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/icon";
 
+
+const handlePress = () => {
+    console.log('Press');
+
+    router.push('/memo/edit');
+};
 
 const Detail = (): JSX.Element => {
     const memos = [
@@ -30,7 +37,7 @@ const Detail = (): JSX.Element => {
                         </ScrollView>
                     </View>
                 ))}
-                <CircleButton style={{ top: 110, bottom:"auto" }}>
+                <CircleButton onPress={handlePress} style={{ top: 110, bottom:"auto" }}>
                     <Icon name="pencil" size={40} color='#fff' />
                 </CircleButton>
             </SafeAreaView>

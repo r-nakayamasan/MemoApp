@@ -9,7 +9,6 @@ interface AuthFormProps {
     setPassword: (text: string) => void;
     buttonText: string;
     onSubmit: () => void;
-    footerLinks: { text: string; onPress: () => void }[];
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({
@@ -20,10 +19,9 @@ const AuthForm: React.FC<AuthFormProps> = ({
     setPassword,
     buttonText,
     onSubmit,
-    footerLinks,
 }) => {
     return (
-        <View style={styles.formContainer}>
+        <View>
             <Text style={styles.title}>{title}</Text>
             
             <View style={styles.inputContainer}>
@@ -55,24 +53,11 @@ const AuthForm: React.FC<AuthFormProps> = ({
             >
                 <Text style={styles.loginButtonText}>{buttonText}</Text>
             </TouchableOpacity>
-            
-            <View style={styles.footer}>
-                {footerLinks.map((link, index) => (
-                    <TouchableOpacity key={index} onPress={link.onPress}>
-                        <Text style={styles.footerText}>{link.text}</Text>
-                    </TouchableOpacity>
-                ))}
-            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    formContainer: {
-        flex: 1,
-        paddingHorizontal: 24,
-        paddingVertical: 27,
-    },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
@@ -108,15 +93,6 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: 16,
         fontWeight: 'bold',
-    },
-    footer: {
-        marginTop: 24,
-        alignItems: 'center',
-    },
-    footerText: {
-        color: '#4285F4',
-        fontSize: 14,
-        marginVertical: 8,
     },
 });
 

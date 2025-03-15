@@ -1,11 +1,13 @@
 import { 
-    View, StatusBar, SafeAreaView, StyleSheet, KeyboardAvoidingView 
+    View, StatusBar, SafeAreaView, StyleSheet, KeyboardAvoidingView, Text, TouchableOpacity
 } from "react-native";
 
 import React, { useState } from "react";
 
 import Header from "../../components/Header";
 import AuthForm from "../../components/AuthForm";
+
+import { Link,router } from "expo-router";
 
 const LogIn = (): JSX.Element => {
     // ログイン情報の状態管理
@@ -16,6 +18,10 @@ const LogIn = (): JSX.Element => {
     const handleLogin = () => {
         // ログイン処理をここに実装
         console.log('ログイン処理:', email, password);
+
+        // ログイン処理成功時の処理
+        // メモ一覧画面に遷移
+        router.push('/memo/list');
     };
 
     return (
@@ -28,21 +34,29 @@ const LogIn = (): JSX.Element => {
             <SafeAreaView style={styles.container}>
                 {/* ヘッダー */}
                 <Header />
-                
-                <AuthForm
-                    title="Log In"
-                    email={email}
-                    password={password}
-                    setEmail={setEmail}
-                    setPassword={setPassword}
-                    buttonText="ログイン"
-                    onSubmit={handleLogin}
-                    footerLinks={[
-                        // ログに出力するだけの仮実装
-                        { text: 'パスワードをお忘れですか？', onPress: () => console.log('パスワードリセット') },
-                        { text: 'アカウント登録はこちら', onPress: () => console.log('アカウント登録') },
-                    ]}
-                />
+
+                <View style={styles.formContainer}>                
+                    <AuthForm
+                        title="Log In"
+                        email={email}
+                        password={password}
+                        setEmail={setEmail}
+                        setPassword={setPassword}
+                        buttonText="ログイン"
+                        onSubmit={handleLogin}
+                    />
+
+                    <View style={styles.footer}>
+                        <TouchableOpacity onPress={() => console.log('パスワードリセット')}>
+                            <Text style={styles.footerText}>パスワードをお忘れですか？</Text>
+                        </TouchableOpacity>
+                        <Link href="/auth/sign_up" asChild>
+                            <TouchableOpacity onPress={() => console.log('アカウント登録')}>
+                                <Text style={styles.footerText}>アカウント登録はこちら</Text>
+                            </TouchableOpacity>
+                        </Link>
+                    </View>
+                </View>
             </SafeAreaView>
         </KeyboardAvoidingView>
     );
@@ -56,6 +70,20 @@ const styles = StyleSheet.create({
     statusBarBackground: {
         height: 60,
         backgroundColor: '#4285F4', // iOS用ステータスバーの背景色（濃い青）
+    },
+    formContainer: {
+        flex: 1,
+        paddingHorizontal: 24,
+        paddingVertical: 27,
+    },
+    footer: {
+        marginTop: 24,
+        alignItems: 'center',
+    },
+    footerText: {
+        color: '#4285F4',
+        fontSize: 14,
+        marginVertical: 8,
     },
 });
 

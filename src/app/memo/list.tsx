@@ -1,10 +1,17 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet, SafeAreaView, StatusBar, Platform } from 'react-native';
+import { View, ScrollView, StyleSheet, SafeAreaView, StatusBar, Platform, TouchableOpacity } from 'react-native';
 
 import Header from '../../components/Header';
 import MemoListItem from '../../components/MemoListItem';
 import CircleButton from '../../components/CircleButton';
 import Icon from '../../components/icon';
+import { router } from 'expo-router';
+
+const handlePress = () => {
+  console.log('Press');
+
+  router.push('/memo/newCreate');
+};
 
 const List = () => {
   const memos = [
@@ -34,11 +41,13 @@ const List = () => {
         <ScrollView style={styles.memoList}>
           {/* todoの一覧を取得 */}
           {memos.map(memo => (
-            <MemoListItem key={memo.id} {...memo} />
+            <TouchableOpacity onPress={() => router.push('/memo/detail')} key={memo.id}>
+              <MemoListItem {...memo} />
+            </TouchableOpacity>
           ))}
         </ScrollView>
         {/* 追加ボタン */}
-        <CircleButton>
+        <CircleButton onPress={handlePress}>
           <Icon name="plus" size={40} color='#fff' />
         </CircleButton>
       </SafeAreaView>

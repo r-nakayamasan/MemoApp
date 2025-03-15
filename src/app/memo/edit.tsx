@@ -3,11 +3,18 @@ import {
 } from "react-native";
 
 import React from "react";
+import { router } from "expo-router";
 
 import Header from "../../components/Header";
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/icon";
 
+const handlePress = () => {
+    console.log('Press');
+
+    // メモ詳細画面に遷移
+    router.back();
+};
 
 const Edit = (): JSX.Element => {
     const memos = [
@@ -40,7 +47,7 @@ const Edit = (): JSX.Element => {
                         />
                     </ScrollView>
                 </View>
-                <CircleButton>
+                <CircleButton onPress={handlePress}>
                     <Icon name="check" size={40} color='#fff' />
                 </CircleButton>
             </SafeAreaView>
