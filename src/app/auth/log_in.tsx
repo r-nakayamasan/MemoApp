@@ -4,13 +4,13 @@ import {
 
 import React, { useState } from "react";
 
-import Header from "../../components/Header";
 import AuthForm from "../../components/AuthForm";
 
 import { Link,router } from "expo-router";
 
 const LogIn = (): JSX.Element => {
     // ログイン情報の状態管理
+    // react hootsのuseStateを使用している
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -20,8 +20,10 @@ const LogIn = (): JSX.Element => {
         console.log('ログイン処理:', email, password);
 
         // ログイン処理成功時の処理
-        // メモ一覧画面に遷移
-        router.push('/memo/list');
+        // メモ一覧画面に遷移、履歴でstackに追加している
+        // router.push('/memo/list');
+        // メモ一覧画面に遷移、履歴をリセットしている
+        router.replace('/memo/list');
     };
 
     return (
@@ -29,11 +31,7 @@ const LogIn = (): JSX.Element => {
             <StatusBar
                 barStyle="light-content" // アイコンの色（白）
             />
-            {/* ステータスバーの背景色 */}
-            <View style={styles.statusBarBackground} />
             <SafeAreaView style={styles.container}>
-                {/* ヘッダー */}
-                <Header />
 
                 <View style={styles.formContainer}>                
                     <AuthForm

@@ -33,6 +33,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
                     autoCapitalize="none"
                     keyboardType="email-address"
                     placeholder="example@example.com"
+                    textContentType='emailAddress'
                 />
             </View>
             
@@ -44,6 +45,8 @@ const AuthForm: React.FC<AuthFormProps> = ({
                     onChangeText={setPassword}
                     secureTextEntry
                     placeholder="パスワードを入力"
+                    autoCapitalize='none'
+                    textContentType='password'
                 />
             </View>
             

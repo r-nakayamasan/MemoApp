@@ -5,7 +5,6 @@ import {
 import React from "react";
 import { router } from "expo-router";
 
-import Header from "../../components/Header";
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/icon";
 
@@ -30,11 +29,8 @@ const Edit = (): JSX.Element => {
             <StatusBar
                 barStyle="light-content" // アイコンの色（白）
             />
-            {/* ステータスバーの背景色、デモ用でosのチェックやモデルごとの高さの調整なし */}
-            <View style={styles.statusBarBackground} />
+            {/* デモ用でosのチェックやモデルごとの高さの調整なし */}
             <SafeAreaView style={styles.container}>
-                {/* ヘッダー */}
-                <Header />
                 {/* 将来的にはデティール用のコンポーネントを作成する */}
                 {/* メモ編集エリア */}
                 <View style={{ flex: 1 }}>

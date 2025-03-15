@@ -4,7 +4,6 @@ import {
 
 import React, { useState } from "react";
 
-import Header from "../../components/Header";
 import AuthForm from "../../components/AuthForm";
 
 import { Link, router } from "expo-router";
@@ -24,9 +23,7 @@ const SignUp = (): JSX.Element => {
     return (
         <KeyboardAvoidingView behavior="height" style={styles.container}>
             <StatusBar barStyle="light-content" />
-            <View style={styles.statusBarBackground} />
             <SafeAreaView style={styles.container}>
-                <Header />
 
                 <View style={styles.formContainer}>
                     <AuthForm

@@ -1,11 +1,13 @@
-import React from 'react';
-import { View, ScrollView, StyleSheet, SafeAreaView, StatusBar, Platform, TouchableOpacity } from 'react-native';
+import { useEffect } from 'react';
+import { 
+  View, ScrollView, StyleSheet, SafeAreaView, 
+  StatusBar, Platform, TouchableOpacity, Text
+} from 'react-native';
 
-import Header from '../../components/Header';
 import MemoListItem from '../../components/MemoListItem';
 import CircleButton from '../../components/CircleButton';
 import Icon from '../../components/icon';
-import { router } from 'expo-router';
+import { router, useNavigation } from 'expo-router';
 
 const handlePress = () => {
   console.log('Press');
@@ -27,16 +29,27 @@ const List = () => {
     { id: 10, title: '12月の予算', date: '2020年12月24日 10:00' },
   ];
 
+  const navigation = useNavigation();
+  useEffect(() => {
+    // コンポーネントライフサイクル: コンポーネントがマウントされた後に実行される
+    // 空の依存配列[]を指定しているため、コンポーネントの初回レンダリング時に1回だけ実行される
+    // このタイミングでナビゲーションのヘッダー右側にログアウトボタンを動的に追加している
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity style={styles.headerRight}>
+          <Text style={styles.logoutButton}>ログアウト</Text>
+        </TouchableOpacity>
+      ),
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
       <StatusBar
         barStyle="light-content" // アイコンの色（白）
       />
-      {/* ステータスバーの背景色、デモ用でosのチェックやモデルごとの高さの調整なし */}
-      <View style={styles.statusBarBackground} />
+      {/* デモ用でosのチェックやモデルごとの高さの調整なし */}
       <SafeAreaView style={styles.container}>
-        {/* ヘッダー */}
-        <Header />
         {/* メモリスト */}
         <ScrollView style={styles.memoList}>
           {/* todoの一覧を取得 */}
@@ -66,6 +79,14 @@ const styles = StyleSheet.create({
   },
   memoList: {
     flex: 1,
+  },
+  headerRight: {
+    marginRight: 8,
+  },
+  logoutButton: {
+    color: 'rgba(255, 255, 255, 0.7)',
+    fontSize: 16,
+    lineHeight: 32,
   },
 });
 

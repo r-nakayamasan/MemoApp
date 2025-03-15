@@ -1,7 +1,6 @@
 import { View, Text, StatusBar, SafeAreaView, StyleSheet, ScrollView } from "react-native";
 import { router } from "expo-router";
 
-import Header from "../../components/Header";
 import MemoListItem from "../../components/MemoListItem";
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/icon";
@@ -22,11 +21,9 @@ const Detail = (): JSX.Element => {
             <StatusBar
                 barStyle="light-content" // アイコンの色（白）
             />
-            {/* ステータスバーの背景色、デモ用でosのチェックやモデルごとの高さの調整なし */}
-            <View style={styles.statusBarBackground} />
+            {/* デモ用でosのチェックやモデルごとの高さの調整なし */}
             <SafeAreaView style={styles.container}>
-                {/* ヘッダー */}
-                <Header />
+
                 {/* メモリスト */}
                 {/* 将来的にはデティール用のコンポーネントを作成する */}
                 {memos.map(memo => (
@@ -37,7 +34,7 @@ const Detail = (): JSX.Element => {
                         </ScrollView>
                     </View>
                 ))}
-                <CircleButton onPress={handlePress} style={{ top: 110, bottom:"auto" }}>
+                <CircleButton onPress={handlePress} style={{ top: 40, bottom:"auto" }}>
                     <Icon name="pencil" size={40} color='#fff' />
                 </CircleButton>
             </SafeAreaView>
